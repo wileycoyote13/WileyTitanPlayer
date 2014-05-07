@@ -1,5 +1,8 @@
 package titanplayer;
 
+import com.titan.bll.Player;
+import com.titan.bll.Playlist;
+
 
 /**
  *
@@ -7,10 +10,13 @@ package titanplayer;
  */
 public class PlayerGUI extends javax.swing.JFrame {
     UserAccount login = new UserAccount();
+    Player song;
+    private Playlist music;
     /**
      * Creates new form PlayerGUI
      */
     public PlayerGUI() {
+        this.song = new Player(music);
         initComponents();
     }
 
@@ -61,12 +67,27 @@ public class PlayerGUI extends javax.swing.JFrame {
 
         Play.setFont(new java.awt.Font("Serpentine", 0, 11)); // NOI18N
         Play.setText("Play / Pause");
+        Play.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PlayActionPerformed(evt);
+            }
+        });
 
         Forward.setFont(new java.awt.Font("Serpentine", 0, 11)); // NOI18N
         Forward.setText("Forward / Skip");
+        Forward.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ForwardActionPerformed(evt);
+            }
+        });
 
         Stop.setFont(new java.awt.Font("Serpentine", 0, 11)); // NOI18N
         Stop.setText("Stop");
+        Stop.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                StopActionPerformed(evt);
+            }
+        });
 
         jTextArea2.setColumns(20);
         jTextArea2.setRows(5);
@@ -229,7 +250,7 @@ public class PlayerGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void RewindActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RewindActionPerformed
-        // TODO add your handling code here:
+        song.rewind();// TODO add your handling code here:
     }//GEN-LAST:event_RewindActionPerformed
 
     private void NewPlaylistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewPlaylistActionPerformed
@@ -239,6 +260,18 @@ public class PlayerGUI extends javax.swing.JFrame {
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
       FileChooser addMusicFiles = new FileChooser();  // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void ForwardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ForwardActionPerformed
+        song.skipForward();// TODO add your handling code here:
+    }//GEN-LAST:event_ForwardActionPerformed
+
+    private void StopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StopActionPerformed
+        song.stop();// TODO add your handling code here:
+    }//GEN-LAST:event_StopActionPerformed
+
+    private void PlayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PlayActionPerformed
+        song.play();// TODO add your handling code here:
+    }//GEN-LAST:event_PlayActionPerformed
 
     /**
      * @param args the command line arguments

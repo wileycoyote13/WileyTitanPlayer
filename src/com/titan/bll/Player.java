@@ -44,4 +44,8 @@ public class Player {
     return songlist;
   }
 
+    public void rewind() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }
