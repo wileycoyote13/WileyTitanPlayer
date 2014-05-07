@@ -1,10 +1,16 @@
 package com.titan.bll;
 
+import java.io.BufferedInputStream;
+import java.io.FileInputStream;
+
+
 public class Player {
 
   private final Playlist songlist;
+  private Player player;
   private int songlistIndex;
   private boolean isPlaying;
+  private String fileName;
 
   public Player( Playlist playlistUse ) {
     songlist = playlistUse;
@@ -18,6 +24,18 @@ public class Player {
   
   public void play() {
     isPlaying = true;
+    try
+        {  
+            FileInputStream fis = new FileInputStream(fileName);  
+            BufferedInputStream bis = new BufferedInputStream(fis);
+            player.play();
+            
+        }  
+        catch (Exception e) 
+        {  
+            System.out.println("Sorry, there is an error playing" + fileName + "!" );  
+            System.out.println(e);  
+        }
   }
 
   public void stop() {
